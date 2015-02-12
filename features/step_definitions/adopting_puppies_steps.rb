@@ -3,8 +3,9 @@ Given(/^I am on the puppy adoption site$/) do
 end
 
 
-When(/^I click the View Details button$/) do
-  @browser.button(:value => 'View Details').click
+
+When(/^I click View Details button (\d+)$/) do |button_num|
+  @browser.button(:value => 'View Details', :index=> button_num).click
 end
 
 
@@ -28,12 +29,12 @@ And(/^I enter "(.*?)" in the address field$/) do |address|
 end
 
 
-And(/^I enter "(.*?)" in the email field$/) do |email|
+And(/^I enter "([^\"]*)" in the email field$/) do |email|
   @browser.text_field(:name => 'order[email]').set(email)
 end
 
 
-And(/^I enter "(.*?)" from the pay with dropdown$/) do |pay_type|
+And(/^I enter "([^\"]*)" from the pay with dropdown$/) do |pay_type|
   @browser.select_list(:id => 'order_pay_type').select(pay_type)
 end
 
@@ -43,6 +44,7 @@ And(/^I click the Place Order button$/) do
 end
 
 
-Then(/^I should see "(.*?)"$/) do |text|
-  fail 'Browser text didn\'t match expected value '  unless @browser.text.include? text
+Then(/^I should see "([^\"]*)"$/) do |expected|
+  #fail 'Browser text didn\'t match expected value '  unless @browser.text.include? text
+  expect(@browser.text).to include expected
 end
