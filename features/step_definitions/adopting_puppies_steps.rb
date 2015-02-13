@@ -5,7 +5,7 @@ end
 
 
 When(/^I click View Details button (\d+)$/) do |button_num|
-  @browser.button(:value => 'View Details', :index=> button_num).click
+  @browser.button(:value => 'View Details', :index=> button_num.to_i).click
 end
 
 
@@ -13,6 +13,9 @@ And(/^I click the Adopt ME button$/) do
   @browser.button(:value => 'Adopt Me!').click
 end
 
+And(/^I click Adopt Another Puppy$/) do
+  @browser.button(:value => 'Adopt Another Puppy').click
+end
 
 And(/^I click the Complete the Adoption button$/) do
   @browser.button(:value => 'Complete the Adoption').click

@@ -4,8 +4,14 @@ Feature: Making Cheese
   I want to make cheese
   So I can share my cheesiness
 
-  Scenario: Using the cheese machine
+  Scenario Outline: Using the cheese machine
     Given I have no cheese
-    When I press the make cheese button
-    Then I should have 1 piece of cheese
+    When I press the make "<type>" cheese button
+    Then I should see the "<message>" message
+
+  Examples:
+    | type    | message        |
+    | Swiss   | I love Swiss   |
+    | Blue    | I love Blue    |
+    | Cheddar | I love Cheddar |
 
