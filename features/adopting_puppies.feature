@@ -1,5 +1,6 @@
 Feature: Adopting puppies
-
+  Background:
+    Given I am on the puppy adoption site
   As a puppy lover
   I want to adopt puppies
   So they can chew my furniture
@@ -17,7 +18,6 @@ Feature: Adopting puppies
 #    Then I should see "Thank you for adopting a puppy!"
 
   Scenario: Validate cart with two puppies
-    Given I am on the puppy adoption site
     When I click View Details button 0
     And I click the Adopt ME button
     And I click Adopt Another puppy button
@@ -28,18 +28,10 @@ Feature: Adopting puppies
     And I should see "Hanna" as the name for line item 2
     And I should see "$22.99" as the subtotal for line item 2
     And I should see "$57.94" as the cart_total
-Background:
-  Given I am on the puppy adoption site
 
 
-  Scenario: Checking cart with puppies
-  When I click the Adopt ME button
-    Then I should see puppie name
-    And I check "Collar and Leash" checkbox
-    And I check "Chew toy" checkbox
-    And I check "Travel carrier" checkbox
-    And I check "First Vet Visit" checkbox
-  Then I should see 312.87 in total field
+
+
 
 #  Scenario: Adopting one puppy
 #    When I click View Details button 1
