@@ -11,6 +11,11 @@ end
 
 And(/^I click the Adopt ME button$/) do
   @browser.button(:value => 'Adopt Me!').click
+  @cart = ShoppingCartPage.new(@browser)
+end
+
+And (/^I click Adopt Another puppy button$/) do
+  @browser.button(:value => 'Adopt Another Puppy').click
 end
 
 And(/^I click Adopt Another Puppy$/) do
@@ -51,3 +56,18 @@ Then(/^I should see "([^\"]*)"$/) do |expected|
   #fail 'Browser text didn\'t match expected value '  unless @browser.text.include? text
   expect(@browser.text).to include expected
 end
+
+Then(/^I should see "([^\"]*)" as the name for line item (\d+)$/) do |name, line_item|
+  expect(@cart.name_for_line_item(line_item.to_i)).to include name
+end
+
+  When(/^I should see "([^\"]*)" as the subtotal for line item (\d+)$/) do |subtotal, line_item|
+  expect(@cart.subtotal_for_line_item(line_item.to_i)).to eql subtotal
+end
+
+When(/^I should see "([^\"]*)" as the cart_total$/) do |total|
+  expect(@cart.cart_total).to eql total
+end
+
+
+
