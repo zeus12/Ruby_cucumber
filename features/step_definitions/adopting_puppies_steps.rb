@@ -15,40 +15,38 @@ And(/^I click the Adopt ME button$/) do
 end
 
 And (/^I click Adopt Another puppy button$/) do
-  @browser.button(:value => 'Adopt Another Puppy').click
+  @cart.continue_shopping
 end
 
-And(/^I click Adopt Another Puppy$/) do
-  @browser.button(:value => 'Adopt Another Puppy').click
-end
 
 And(/^I click the Complete the Adoption button$/) do
-  @browser.button(:value => 'Complete the Adoption').click
+  @cart.proceed_to_checkout
+  @checkout = CheckoutPage.new(@browser)
 end
 
 
 And(/^I enter "(.*?)" in the name field$/) do |name|
-  @browser.text_field(:name => 'order[name]').send_keys(name)
+  @checkout.set_name(name)
 end
 
 
 And(/^I enter "(.*?)" in the address field$/) do |address|
-  @browser.textarea(:name => 'order[address]').send_keys(address)
+  @checkout.set_address(address)
 end
 
 
 And(/^I enter "([^\"]*)" in the email field$/) do |email|
-  @browser.text_field(:name => 'order[email]').set(email)
+  @checkout.set_email(email)
 end
 
 
 And(/^I enter "([^\"]*)" from the pay with dropdown$/) do |pay_type|
-  @browser.select_list(:id => 'order_pay_type').select(pay_type)
+  @checkout.choose_pay_type(pay_type)
 end
 
 
 And(/^I click the Place Order button$/) do
-  @browser.button(:value => 'Place Order').click
+ @checkout.place_order
 end
 
 
