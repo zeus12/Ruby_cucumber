@@ -3,7 +3,7 @@ class LoginPage
 
 
   text_field(:username, :id => "user_id")
-  text_filed(:password, :id => "user_password")
+  text_field(:password, :id => "user_password")
   button(:login, :value => "Login")
 
 end

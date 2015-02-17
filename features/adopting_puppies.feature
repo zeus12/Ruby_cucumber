@@ -11,7 +11,7 @@ Feature: Adopting puppies
 
   Scenario: Adopting one puppy
 #    Given I am on the puppy adoption site
-    When I click View Details button 1
+    When I click View Details button 2
     And I click the Adopt ME button
     And I click the Complete the Adoption button
     And I enter "Kitty" in the name field

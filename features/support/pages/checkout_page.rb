@@ -5,7 +5,7 @@ class CheckoutPage
   text_field(:address, :id => 'order[address]')
   text_field(:email, :id => 'order[email]')
   select_list(:pay_type, :id => 'order_pay_type')
-  buttom(:place_order, value => 'Place Order')
+  button(:place_order, :value => 'Place Order')
 
 
   # def initialize(browser)

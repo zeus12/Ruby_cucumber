@@ -1,11 +1,13 @@
 Given(/^I am on the puppy adoption site$/) do
   @browser.goto 'http://puppies.herokuapp.com/'
+  @home = HomePage.new(@browser)
 end
 
 
 
 When(/^I click View Details button (\d+)$/) do |button_num|
-  @browser.button(:value => 'View Details', :index=> button_num.to_i).click
+  @home.select_puppy_number(button_num)
+  @detail = DetailsPage.new(@browser)
 end
 
 
