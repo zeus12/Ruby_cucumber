@@ -18,19 +18,15 @@ class ShoppingCartPage
   ############## work with table #############
   #The name of the puppy
   def name_for_line_item(line_item)
-    cart_line_item(line_item)[NAME_COLUMN].text
+    table_value(line_item, NAME_COLUMN)
   end
 
   def subtotal_for_line_item(line_item)
-    cart_line_item(line_item)[SUBTOTAL_COLUMN].text
+    table_value(line_item, SUBTOTAL_COLUMN)
   end
 
-  def cart_total
-    @browser.td(:class => 'total_cell').text
-  end
-
-  def table_value(lineitem, column)
-    row = (lineitem.to_i -1) * LINES_PER_PUPPY
+  def table_value(line_item, column)
+    row = (line_item-1) * LINES_PER_PUPPY
     cart_element[row][column].text
   end
 
