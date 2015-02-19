@@ -6,11 +6,11 @@ Feature: Adopting puppies
   I want to adopt puppies
   So they can chew my furniture
 
-#  Background:
-#    Given I am on the puppy adoption site
+  Background:
+    Given I am on the puppy adoption site
 
   Scenario: Adopting one puppy
-    When I click View Details button 2
+    When I click View Details button for "Brook"
     And I click the Adopt ME button
     And I click the Complete the Adoption button
     And I enter "Kitty" in the name field
@@ -21,10 +21,10 @@ Feature: Adopting puppies
     Then I should see "Thank you for adopting a puppy!"
 
   Scenario: Validate cart with two puppies
-    When I click View Details button 1
+    When I click View Details button for "Brook"
     And I click the Adopt ME button
     And I click Adopt Another puppy button
-    And I click View Details button 2
+    And I click View Details button for "Hanna"
     And I click the Adopt ME button
     Then I should see "Brook" as the name for line item 1
     And I should see "$34.95" as the subtotal for line item 1

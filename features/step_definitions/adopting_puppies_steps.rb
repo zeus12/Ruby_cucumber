@@ -1,19 +1,16 @@
 Given(/^I am on the puppy adoption site$/) do
-  @browser.goto 'http://puppies.herokuapp.com/'
-  @home = HomePage.new(@browser)
+  visit(HomePage)
 end
 
 
 
-When(/^I click View Details button (\d+)$/) do |button_num|
-  visit(HomePage).select_puppy_number(button_num)
-  #@detail = DetailsPage.new(@browser)
+When(/^I click View Details button for "(.*?)"$/) do |name|
+  on(HomePage).select_puppy_number(name)
 end
 
 
 And(/^I click the Adopt ME button$/) do
   on(DetailsPage).add_to_cart
-  #@cart = ShoppingCartPage.new(@browser)
 end
 
 And (/^I click Adopt Another puppy button$/) do
@@ -23,7 +20,6 @@ end
 
 And(/^I click the Complete the Adoption button$/) do
  on(ShoppingCartPage).proceed_to_checkout
-  #@checkout = CheckoutPage.new(@browser)
 end
 
 
@@ -53,8 +49,7 @@ end
 
 
 Then(/^I should see "([^\"]*)"$/) do |expected|
-  #fail 'Browser text didn\'t match expected value '  unless @browser.text.include? text
-  expect(@browser.text).to include expected
+  expect(@current_page.text).to include expected
 end
 
 Then(/^I should see "([^\"]*)" as the name for (line item \d+)$/) do |name, line_item|
